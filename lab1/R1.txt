@@ -24,4 +24,4 @@ set system ntp server time2.vyos.net
 set system ntp server time3.vyos.net
 set system syslog global facility all level 'info'
 set system syslog global facility protocols level 'debug'
-vyos@R1
+vyos@vyos

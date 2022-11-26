@@ -1,5 +1,7 @@
 
 !
+! Last configuration change at 19:06:59 UTC Sat Nov 26 2022
+!
 version 15.1
 service timestamps debug datetime msec
 service timestamps log datetime msec
@@ -16,6 +18,7 @@ boot-end-marker
 no aaa new-model
 no ipv6 cef
 ipv6 multicast rpf use-bgp
+vtp mode transparent
 !
 ip cef
 !
@@ -31,6 +34,8 @@ spanning-tree vlan 10,20 priority 24576
 !
 !
 vlan internal allocation policy ascending
+!
+vlan 10,20 
 !
 ! 
 !
