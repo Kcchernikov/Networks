@@ -1,0 +1,44 @@
+set interfaces ethernet eth0 hw-id '50:00:00:01:00:00'
+set interfaces ethernet eth0 vif 10 address '10.0.10.100/24'
+set interfaces ethernet eth0 vif 20 address '10.0.20.100/24'
+set interfaces ethernet eth1 address '10.1.0.1/24'
+set interfaces ethernet eth1 hw-id '50:00:00:01:00:01'
+set interfaces ethernet eth2 hw-id '50:00:00:01:00:02'
+set interfaces ethernet eth3 hw-id '50:00:00:01:00:03'
+set interfaces loopback lo
+set nat source rule 100 outbound-interface 'eth1'
+set nat source rule 100 source address '10.0.10.0/24'
+set nat source rule 100 translation address '10.1.0.1'
+set nat source rule 200 outbound-interface 'eth1'
+set nat source rule 200 source address '10.0.20.0/24'
+set nat source rule 200 translation address '10.1.0.1'
+set service dhcp-server shared-network-name LAN1 authoritative
+set service dhcp-server shared-network-name LAN1 name-server '8.8.8.8'
+set service dhcp-server shared-network-name LAN1 ping-check
+set service dhcp-server shared-network-name LAN1 subnet 10.0.10.0/24 default-router '10.0.10.100'
+set service dhcp-server shared-network-name LAN1 subnet 10.0.10.0/24 range n start '10.0.10.11'
+set service dhcp-server shared-network-name LAN1 subnet 10.0.10.0/24 range n stop '10.0.10.254'
+set service dhcp-server shared-network-name LAN2 authoritative
+set service dhcp-server shared-network-name LAN2 name-server '8.8.8.8'
+set service dhcp-server shared-network-name LAN2 ping-check
+set service dhcp-server shared-network-name LAN2 subnet 10.0.20.0/24 default-router '10.0.20.100'
+set service dhcp-server shared-network-name LAN2 subnet 10.0.20.0/24 range n start '10.0.20.11'
+set service dhcp-server shared-network-name LAN2 subnet 10.0.20.0/24 range n stop '10.0.20.254'
+set system config-management commit-revisions '100'
+set system conntrack modules ftp
+set system conntrack modules h323
+set system conntrack modules nfs
+set system conntrack modules pptp
+set system conntrack modules sip
+set system conntrack modules sqlnet
+set system conntrack modules tftp
+set system console device ttyS0 speed '115200'
+set system host-name 'R1'
+set system login user vyos authentication encrypted-password '$6$zoASNrNFwMFo$hmMLHsClTRmWw8TQLM4oQve9tWhPsw1lfWK71Poo1595Ef/BH7yy50IfULD4nuLyH83nh47aXv1MkiAWd100X0'
+set system login user vyos authentication plaintext-password ''
+set system ntp server time1.vyos.net
+set system ntp server time2.vyos.net
+set system ntp server time3.vyos.net
+set system syslog global facility all level 'info'
+set system syslog global facility protocols level 'debug'
+vyos@R1

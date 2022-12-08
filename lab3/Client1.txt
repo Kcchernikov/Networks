@@ -1,0 +1,3 @@
+set pcname Client1
+dhcp
+
